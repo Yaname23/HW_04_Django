@@ -1,0 +1,38 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+    Продукт #{{ product.pk }}
+{% endblock %}
+
+{% block body %}
+<h1 xmlns="http://www.w3.org/1999/html"> <strong>{{ product.name }}</strong></h1>
+
+    <div>
+
+                        <ul>
+
+                            <div>
+                             <li>{{ product.description }} </li>
+                             <li>Цена: {{ product.price }} руб. </li>
+                             <li>Количество в наличии: {{ product.quantity }} шт. </li>
+                             <li>Дата поступления товара: {{ product.created_at }}  </li>
+                             <li>Товар числится под номером: {{ product.id }}  </li>
+                             <h3>Изображение продукта</h3>
+                              <img src="{{ product.picture.url }} " alt="{{ product.picture.name }}">
+                             {% if product.picture %}
+                                {% for product in products %}
+                                    <img src="{{ product.picture.url }} " alt="{{ product.picture.name }}">
+                                {% empty %}
+                                    <div>.....</div>
+                                {% endfor %}
+                             {% endif %}
+                            </div>
+                        </ul>
+    </div>
+    <div>
+        <a href="{% url 'shopapp:product_update' pk=product.id %}">Обновить данные о продукте</a>
+    </div>
+    <div>
+        <a href="{% url 'shopapp:product_list' %}">Вернуться к списку продуктов</a>
+    </div>
+{% endblock %}

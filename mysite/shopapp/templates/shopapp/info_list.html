@@ -1,0 +1,29 @@
+{% extends 'shopapp/base.html' %}
+{% block title %}
+   Info_list
+{% endblock %}
+<br/>
+{% block body %}
+   <h1>Данные о заказах</h1>
+   {% if orders %}
+        <div>
+            {% for order in orders %}
+                <div>
+                    <br><h4>Заказ  #{{ order.id }} от {{ order.created_at }} </h4>
+                    <p>Покупатель: {{ order.client.name }}<br></p>
+                    <p>Продукты в заказе:
+                        <ul>
+                            {% for product in order.products.all %}
+                                <li>{{ product.name }} </li>
+                            {% endfor %}
+                        </ul>
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h3>No orders yet</h3>
+
+
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Base title
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+{% block body %}
+    Base body
+{% endblock %}
+
+
+</body>
+<footer>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <div>
+        <h3>Спасибо за то, что посетили мой сайт! Хорошего дня!  </h3>
+    </div>
+    <div>
+        <p>Текущее время: <time id="currentTime"></time></p>
+
+        <script>
+          var timeElement = document.getElementById('currentTime');
+          setInterval(function () {
+            var currentTime = new Date();
+            timeElement.textContent = currentTime.toLocaleTimeString();
+          }, 1000);
+        </script>
+    </div>
+</footer>
+</html>

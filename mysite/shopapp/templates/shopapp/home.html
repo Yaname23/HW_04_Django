@@ -1,0 +1,20 @@
+{% extends 'shopapp/base.html' %}
+{% block title %}
+   Home page
+
+{% endblock %}
+
+
+{% block body %}
+
+   <h1>Домашняя страница моего сайта </h1>
+   <h2>Где я могу написать что-то, что я о моем сайте... </h2>
+
+    <br/>
+    <h3>Пока не знаю что написать, поэтому я добавила три обзаца с lorem:</h3>
+
+    <div>
+        {% lorem 3 p random %}<br/>
+    </div>
+
+{% endblock %}

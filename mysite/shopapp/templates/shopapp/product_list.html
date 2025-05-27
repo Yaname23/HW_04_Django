@@ -1,0 +1,33 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+    Products List
+{% endblock %}
+<br/>
+{% block body %}
+    <h1>Продукты</h1>
+    {% if products %}
+
+        <div>
+            {% for product in products %}
+                <div>
+                    <br><h4><a href= "{% url 'shopapp:product_details' pk=product.id %}">{{ product.name }}</a> </h4>
+                    <div>
+                         <ul>
+                             <li>{{ product.description }} </li>
+                             <li>Цена: {{ product.price }} руб. </li>
+                             <li>Количество в наличии: {{ product.quantity }} шт. </li>
+
+
+                              {% if product.preview %}
+                                <img src="{{ product.preview.url }} " alt="{{ product.preview.name }}">
+                              {% endif %}
+                         </ul>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+
+    {% endif %}
+{% endblock %}
